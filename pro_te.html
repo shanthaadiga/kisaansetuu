@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="te">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>రైతు ప్రొఫైల్ - కిసాన్ సేతు</title>
+    <style>
+        :root {
+            --primary: #1b5e20;
+            --secondary: #4caf50;
+            --bg: #f4f7f4;
+            --card: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .profile-card {
+            background: var(--card);
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .profile-header {
+            margin-bottom: 20px;
+        }
+
+        .profile-icon {
+            font-size: 3rem;
+            background: #e8f5e9;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+        }
+
+        h2 {
+            color: var(--primary);
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .info-grid {
+            text-align: left;
+            margin-top: 30px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .info-item {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .value {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .btn-home {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="profile-card">
+        <div class="profile-header">
+            <div class="profile-icon">👤</div>
+            <h2 id="display-name">రైతు పేరు</h2>
+            <p class="subtitle">నమోదిత రైతు వివరాలు</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="label">వయస్సు:</span>
+                <span class="value" id="display-age">--</span>
+            </div>
+            <div class="info-item">
+                <span class="label">ఫోన్ నంబర్:</span>
+                <span class="value" id="display-phone">--</span>
+            </div>
+            <div class="info-item">
+                <span class="label">పొలం పరిమాణం:</span>
+                <span class="value" id="display-farm">-- ఎకరాలు</span>
+            </div>
+        </div>
+
+        <a href="det_te.html" id='finalLink' class="btn-home">హోమ్ పేజీకి వెళ్ళండి</a>
+    </div>
+
+    <script>
+        // Logic to extract data from the URL
+        const params = new URLSearchParams(window.location.search);
+
+        const name = params.get('name') || "సమాచారం లేదు";
+        const age = params.get('age') || "--";
+        const phone = params.get('phone') || "--";
+        const farm = params.get('farmSize') || "0.0";
+
+        document.getElementById('display-name').textContent = name;
+        document.getElementById('display-age').textContent = age + " సంవత్సరాలు";
+        document.getElementById('display-phone').textContent = phone;
+        document.getElementById('display-farm').textContent = farm + " ఎకరాలు";
+
+         const currentData = window.location.search;
+
+            // 2. Find your link
+            const link = document.getElementById('finalLink');
+
+            // 3. Update the link's destination to include the data
+            if (currentData) {
+                link.href = link.href + currentData;
+            }
+    </script>
+
+</body>
+
+</html>
